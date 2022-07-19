@@ -49,7 +49,7 @@ public class PassengerController {
 		return ResponseEntity.ok(this.passengerService.getAllPassengers());
 	}
 
-	@GetMapping("/v2/{passengerId}")
+	@GetMapping("/v1/{passengerId}")
 	public ResponseEntity<PassengerDTO> getPassengerById(@PathVariable("passengerId") Long id) {
 		return ResponseEntity.ok(this.passengerService.getPassengerById(id));
 	}

@@ -39,8 +39,7 @@ public class TrainServiceImpl implements TrainService {
 		train.setTrainName(trainDTO.getTrainName());
 		train.setStartPoint(trainDTO.getStartPoint());
 		train.setEndPoint(trainDTO.getEndPoint());
-		train.setArrival(trainDTO.getArrival());
-		train.setDeparture(trainDTO.getDeparture());
+
 		Train updateTrain = this.trainRepository.save(train);
 
 		return this.modelMapper.map(updateTrain, TrainDTO.class);
