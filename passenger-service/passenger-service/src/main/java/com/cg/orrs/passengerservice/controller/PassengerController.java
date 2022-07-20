@@ -19,7 +19,7 @@ import com.cg.orrs.passengerservice.exception.ApiResponse;
 import com.cg.orrs.passengerservice.service.PassengerService;
 
 @RestController
-@RequestMapping("/api/passengers")
+@RequestMapping("/passengers")
 public class PassengerController {
 
 	@Autowired
