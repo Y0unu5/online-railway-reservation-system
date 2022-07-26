@@ -20,6 +20,7 @@ import com.cg.orrs.passengerservice.service.PassengerService;
 
 @RestController
 @RequestMapping("/passengers")
+
 public class PassengerController {
 
 	@Autowired
@@ -40,6 +41,7 @@ public class PassengerController {
 	@PutMapping("/{passengerId}")
 	public ResponseEntity<PassengerDTO> updatePassenger(@RequestBody PassengerDTO passengerDTO,
 			@PathVariable("passengerId") Long id) {
+
 		PassengerDTO updatePassenger = this.passengerService.updatePassenger(passengerDTO, id);
 		return ResponseEntity.ok(updatePassenger);
 	}

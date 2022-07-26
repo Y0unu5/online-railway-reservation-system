@@ -8,15 +8,17 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableEurekaClient
+
 public class TrainServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TrainServiceApplication.class, args);
 	}
-	
+
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
 
+	
 }

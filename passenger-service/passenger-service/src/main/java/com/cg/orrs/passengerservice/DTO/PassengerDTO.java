@@ -20,5 +20,6 @@ public class PassengerDTO {
 	private String gender;
 	private Long phoneNo;
 	private String address;
+	private String password;
 
 }

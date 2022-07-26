@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.cg.orrs.passengerservice.DTO.PassengerDTO;
@@ -22,8 +23,12 @@ public class PassengerServiceImpl implements PassengerService {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	@Override
 	public PassengerDTO createPassenger(PassengerDTO passengerDTO) {
+		passengerDTO.setPassword(bCryptPasswordEncoder.encode(passengerDTO.getPassword()));
 
 		Passenger passenger = modelMapper.map(passengerDTO, Passenger.class);
 		Passenger passenger2 = passengerRepository.save(passenger);
@@ -74,7 +79,7 @@ public class PassengerServiceImpl implements PassengerService {
 		Passenger passenger = this.passengerRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Passenger", "Id", id));
 		this.passengerRepository.delete(passenger);
-		
+
 	}
 
 }

@@ -18,8 +18,12 @@ import com.cg.orrs.trainservice.DTO.TrainDTO;
 import com.cg.orrs.trainservice.exception.ApiResponse;
 import com.cg.orrs.trainservice.service.TrainService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
-@RequestMapping("/api/trains")
+@RequestMapping("/trains")
+@Api(description = "Train API having endpoints which are used to interact with Online Railway Reservation system micrservice")
 public class TrainController {
 
 	@Autowired
@@ -31,6 +35,7 @@ public class TrainController {
 	}
 
 	@PostMapping("/")
+	@ApiOperation("Used to add the train into system")
 	public ResponseEntity<TrainDTO> saveTrains(@RequestBody TrainDTO trainDTO) {
 		TrainDTO train = this.trainService.saveTrains(trainDTO);
 
@@ -45,6 +50,7 @@ public class TrainController {
 	}
 
 	@GetMapping("/")
+	@ApiOperation("List all the trains into the system")
 	public ResponseEntity<List<TrainDTO>> getAllTrains() {
 		return ResponseEntity.ok(this.trainService.getAllTrains());
 	}
